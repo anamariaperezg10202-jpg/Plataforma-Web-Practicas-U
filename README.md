@@ -7,7 +7,7 @@ Prototipo funcional del Taller 3 de Ingeniería de Software. Centraliza el proce
 2. **Vacantes y postulaciones** (RF-02 a RF-07 parcial): la empresa publica, el coordinador aprueba o rechaza, el estudiante se postula y la empresa acepta o rechaza.
 
 ## Tecnologías
-Node.js 22 · Express · SQLite (better-sqlite3) · JavaScript en el navegador · Jest y Supertest para las pruebas.
+Node.js 22 · Express · SQLite (módulo node:sqlite integrado en Node.js) · JavaScript en el navegador · Jest y Supertest para las pruebas.
 
 ## Ejecución local
 ```bash

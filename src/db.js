@@ -1,4 +1,6 @@
-const Database = require('better-sqlite3');
+// Base de datos integrada en Node.js (node:sqlite): no requiere compilar nada.
+// process.getBuiltinModule evita problemas de resolución con Jest.
+const { DatabaseSync } = process.getBuiltinModule('node:sqlite');
 
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS programa (
@@ -56,9 +58,15 @@ CREATE TABLE IF NOT EXISTS postulacion (
 `;
 
 function createDb(file = ':memory:') {
-  const db = new Database(file);
-  db.pragma('foreign_keys = ON');
+  const db = new DatabaseSync(file);
+  db.exec('PRAGMA foreign_keys = ON');
   db.exec(SCHEMA);
+  // Transacción simple (equivale a db.transaction de otras librerías).
+  db.transaction = (fn) => () => {
+    db.exec('BEGIN');
+    try { const r = fn(); db.exec('COMMIT'); return r; }
+    catch (e) { db.exec('ROLLBACK'); throw e; }
+  };
   return db;
 }
 
