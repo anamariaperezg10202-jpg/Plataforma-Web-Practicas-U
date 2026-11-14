@@ -22,6 +22,12 @@ Para cargar datos de ejemplo con el servidor encendido: `node scripts/demo.js ht
 npm test                      # unitarias + integración
 npm test -- --coverage        # con cobertura
 ```
+## Cuentas de prueba
+| Rol | Correo | Contraseña |
+|---|---|---|
+| Estudiante | ana@soyucn.edu.co | Clave1234 |
+| Empresa | rrhh@techandina.co | Empresa2026 |
+| Coordinador | coordinador@universidad.edu.co | Coord1234 |
 
 ## Despliegue
 Incluye `Dockerfile`. Variables: `PORT`, `JWT_SECRET` (obligatoria en producción) y `DB_PATH`.
